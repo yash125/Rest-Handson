@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+
+https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	 <bean id="dateFormat" class="java.text.SimpleDateFormat">
+        <constructor-arg value="dd/MM/yyyy" />
+    </bean>
+
+	<bean id="dep1" class="com.cognizant.project.model.Department"
+		scope="prototype">
+
+		<property name="id" value="1" />
+
+		<property name="name" value="Payroll" />
+
+	</bean>
+	<bean id="dep2" class="com.cognizant.project.model.Department"
+		scope="prototype">
+
+		<property name="id" value="2" />
+
+		<property name="name" value="Frontend" />
+
+	</bean>
+	<bean id="dep3" class="com.cognizant.project.model.Department"
+		scope="prototype">
+
+		<property name="id" value="3" />
+
+		<property name="name" value="Backend" />
+	</bean>
+
+	<bean id="skill1" class="com.cognizant.project.model.Skill"
+		scope="prototype">
+
+		<property name="id" value="1" />
+
+		<property name="name" value="HTML" />
+
+	</bean>
+	<bean id="skill2" class="com.cognizant.project.model.Skill"
+		scope="prototype">
+
+		<property name="id" value="2" />
+
+		<property name="name" value="JavaScript" />
+
+	</bean>
+
+	<bean id="emp1" class="com.cognizant.project.model.Employee"
+		scope="prototype">
+
+		<property name="id" value="1" />
+
+		<property name="name" value="Yash" />
+		<property name="salary" value="2000000" />
+		<property name="permanent" value="true" />
+		<property name="department">
+			<ref bean="dep1" />
+		</property>
+		<property name="skills">
+			<ref bean="skill2" />
+		</property>
+		<property name="date">
+            <bean factory-bean="dateFormat" factory-method="parse">
+                <constructor-arg value="31/07/2021" />
+            </bean>
+        </property>
+
+
+	</bean>
+
+	<bean id="emp2" class="com.cognizant.project.model.Employee"
+		scope="prototype">
+
+		<property name="id" value="2" />
+
+		<property name="name" value="ABC" />
+		<property name="salary" value="277979" />
+		<property name="permanent" value="true" />
+		<property name="department">
+			<ref bean="dep2" />
+		</property>
+		<property name="skills">
+			<ref bean="skill2" />
+		
+		</property>
+		
+		<property name="date">
+            <bean factory-bean="dateFormat" factory-method="parse">
+                <constructor-arg value="26/09/2021" />
+            </bean>
+        </property>
+	</bean>
+
+
+	<bean id="employeeList" class="java.util.ArrayList">
+
+		<constructor-arg>
+
+			<list>
+
+				<ref bean="emp1"></ref>
+
+				<ref bean="emp2"></ref>
+
+
+			</list>
+
+		</constructor-arg>
+
+	</bean>
+
+	<bean id="departmentList" class="java.util.ArrayList">
+
+		<constructor-arg>
+
+			<list>
+
+				<ref bean="dep1"></ref>
+
+				<ref bean="dep2"></ref>
+
+				<ref bean="dep3"></ref>
+
+
+			</list>
+
+		</constructor-arg>
+
+	</bean>
+
+
+
+
+
+
+
+</beans>
